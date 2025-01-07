@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Art Portfolio</title>
+    <style>
+        /* Basic styling */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Toolbar */
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+        }
+        .toolbar .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+        .toolbar a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+        }
+        .toolbar a:hover {
+            background-color: #555;
+            border-radius: 5px;
+        }
+
+        /* Slideshow */
+        .slideshow {
+            position: relative;
+            width: 100%;
+            height: 80vh;
+            overflow: hidden;
+        }
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Navigation buttons */
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 50%;
+        }
+        .nav-btn:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .nav-btn.left {
+            left: 10px;
+        }
+        .nav-btn.right {
+            right: 10px;
+        }
+
+        /* Mini view */
+        .mini-view {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 20px;
+        }
+        .mini-view .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+        }
+        .mini-view img {
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Toolbar -->
+    <div class="toolbar">
+        <div class="nav-links">
+            <a href="#about">About Me</a>
+            <a href="#quick-tour">Quick Tour</a>
+            <a href="#concept-art">Concept Art</a>
+            <a href="#sketches">Sketches</a>
+            <a href="#contact">Contact</a>
+            <a href="#social-media">Social Media</a>
+        </div>
+        <button id="mini-view-btn">&#x25A2;</button>
+    </div>
+
+    <!-- Slideshow -->
+    <div class="slideshow">
+        <div class="slides">
+            <div class="slide" style="background-image: url('art1.jpg');"></div>
+            <div class="slide" style="background-image: url('art2.jpg');"></div>
+            <div class="slide" style="background-image: url('art3.jpg');"></div>
+        </div>
+        <button class="nav-btn left">&#9664;</button>
+        <button class="nav-btn right">&#9654;</button>
+    </div>
+
+    <!-- Mini View -->
+    <div class="mini-view" id="mini-view">
+        <h2>Mini View of Artworks</h2>
+        <div class="grid">
+            <img src="art1.jpg" alt="Artwork 1">
+            <img src="art2.jpg" alt="Artwork 2">
+            <img src="art3.jpg" alt="Artwork 3">
+        </div>
+        <button id="close-mini-view">Close</button>
+    </div>
+
+    <script>
+        // Slideshow logic
+        const slides = document.querySelector('.slides');
+        const slideCount = document.querySelectorAll('.slide').length;
+        let currentIndex = 0;
+
+        document.querySelector('.nav-btn.left').addEventListener('click', () => {
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : slideCount - 1;
+            slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+        });
+
+        document.querySelector('.nav-btn.right').addEventListener('click', () => {
+            currentIndex = (currentIndex < slideCount - 1) ? currentIndex + 1 : 0;
+            slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+        });
+
+        // Mini view logic
+        const miniView = document.getElementById('mini-view');
+        document.getElementById('mini-view-btn').addEventListener('click', () => {
+            miniView.style.display = 'block';
+        });
+        document.getElementById('close-mini-view').addEventListener('click', () => {
+            miniView.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
