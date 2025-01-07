@@ -17,8 +17,8 @@
             justify-content: space-between;
             align-items: center;
             padding: 10px 20px;
-            background-color: #333;
-            color: white;
+            background-color: #171717;
+            color: rgb(255, 255, 255);
         }
         .toolbar .nav-links {
             display: flex;
@@ -30,8 +30,37 @@
             padding: 5px 10px;
         }
         .toolbar a:hover {
-            background-color: #555;
+            background-color: #0d0d0d;
             border-radius: 5px;
+        }
+
+        /* Hero Bar */
+        .hero-bar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 50vh;
+            background-color: #222;
+            color: white;
+            text-align: center;
+        }
+        .hero-bar h1 {
+            font-size: 3rem;
+            margin: 0;
+        }
+        .hero-bar .social-icons {
+            margin: 20px 0;
+            display: flex;
+            gap: 15px;
+        }
+        .hero-bar .social-icons a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+        }
+        .hero-bar .social-icons a:hover {
+            color: #ccc;
         }
 
         /* Slideshow */
@@ -97,6 +126,14 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
+        /* Section Label */
+        .section-label {
+            text-align: center;
+            font-size: 2rem;
+            margin: 20px 0;
+            color: #333;
+        }
     </style>
 </head>
 <body>
@@ -112,6 +149,20 @@
         </div>
         <button id="mini-view-btn">&#x25A2;</button>
     </div>
+
+    <!-- Hero Bar -->
+    <div class="hero-bar">
+        <h1>CALAMITY DRAWS</h1>
+        <div class="social-icons">
+            <a href="#" title="Instagram">&#x1F4F7;</a>
+            <a href="#" title="Twitter">&#x1F426;</a>
+            <a href="#" title="ArtStation">&#x1F4F1;</a>
+        </div>
+        <p>I draw lol</p>
+    </div>
+
+    <!-- Section Label -->
+    <div class="section-label">QUICK TOUR</div>
 
     <!-- Slideshow -->
     <div class="slideshow">
